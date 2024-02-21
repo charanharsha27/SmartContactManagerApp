@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" th:replace="~{base :: layout(~{::section})}">
+<head>
+<title>Spring Security Example</title>
+</head>
+<body>	
+		<section class="vh-100">
+			<div class="container-fluid h-custom">
+				<div th:if="${session.message}" class="container">
+					<div class="alert-dismissible fade show" th:classappend="${session.message.type}" role="alert">
+						<span th:text="${session.message.message}"></span>
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					<th:block th:text="${@sessionHelper.removeMessageFromSession()}" ></th:block>
+				</div>
+
+				<div
+					class="row d-flex justify-content-center align-items-center h-100">
+					<div class="col-md-9 col-lg-6 col-xl-5">
+						<img
+							src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+							class="img-fluid" alt="Sample image">
+					</div>
+					<div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+						<form th:action="@{/home/login}" action="#" method="post">
+							<div
+								class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
+								<p class="lead fw-normal mb-0 me-3">Welcome Back User.!</p>
+							</div>
+							
+							
+							<div class="divider d-flex align-items-center my-4">
+
+							</div>
+						
+
+							<!-- Displaying Error(If) -->
+							 <div th:if="${param.error}">
+							 	<p>Invalid UserName or Password...</p>
+							 	<p><b style="color:red;">Please Click on the the LogIn Link Again to Continue</b></p>
+							 </div>
+        					<!-- LogOut Message -->
+							 <div th:if="${param.logout}">
+            					<p>Logged Out Successfully</p>
+            					<p><b style="color:red;">Please Click on the the LogIn Link Again to Continue</b></p>
+        					</div>
+        					
+							<!-- Email input -->
+							<div class="form-outline mb-4">
+								<input type="text" name="username" id="form3Example3"
+									class="form-control form-control-lg"
+									placeholder="Enter Your Email" /> <label
+									class="form-label" for="form3Example3">Email address</label>
+							</div>
+
+							<!-- Password input -->
+							<div class="form-outline mb-3">
+								<input type="password" name="password" id="form3Example4"
+									class="form-control form-control-lg"
+									placeholder="Enter password" /> <label class="form-label"
+									for="form3Example4">Password</label>
+							</div>
+						
+						<!-- 
+							<div class="d-flex justify-content-between align-items-center">
+								<div class="form-check mb-0">
+									<input class="form-check-input me-2" type="checkbox" value=""
+										id="form2Example3" /> <label class="form-check-label"
+										for="form2Example3"> Remember me </label>
+								</div>
+								<a href="#!" class="text-body">Forgot password?</a>
+							</div>
+						-->
+							<div class="text-center text-lg-start mt-1 pt-2">
+								<input class="btn btn-primary btn-lg" value="LogIn" type="submit"/>
+
+								<p class="small fw-bold mt-2 pt-1 mb-0">
+									Forgot Your Password? <a th:href="@{/change-pwd/forgot}">Forgot Password</a>
+								</p>
+
+								<p class="small fw-bold mt-2 pt-1 mb-0">
+									Don't have an account? <a th:href="@{/home/signup}" class="link-danger">Register</a>
+								</p>
+							</div>
+
+						</form>
+					</div>
+				</div>
+			</div>
+			
+		</section>
+</body>
+</html>

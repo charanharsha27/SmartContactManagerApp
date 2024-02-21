@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{user/user_base :: layout(~{::section})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<section>
+
+    <div class="card mr-3">
+
+        <div class="card-body">
+
+            <h1 class="text-center">Contribute Us</h1>
+
+            <div class="search-container my-3">
+
+                <h2>Contribute Us..</h2>
+
+                <div class="mb-3">
+                    <label for="amt" class="form-label">Enter Amount</label>
+                    <input type="text" class="form-control" id="amt" aria-describedby="emailHelp">
+                </div>
+
+                <div class="text-center">
+                    <button onclick="startPayment()" class="btn btn-success">PAY</button>
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+</body>
+</html>
